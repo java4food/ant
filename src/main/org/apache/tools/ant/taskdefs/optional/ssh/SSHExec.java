@@ -396,7 +396,7 @@ public class SSHExec extends SSHBase {
                 channel.setInputStream(istream);
             }
             channel.setPty(usePty);
-            channel.connect();
+            channel.connect(DEFAULT_CHANNEL_CONN_TIMEOUT);
             // wait for it to finish
             thread =
                     new Thread(() -> {

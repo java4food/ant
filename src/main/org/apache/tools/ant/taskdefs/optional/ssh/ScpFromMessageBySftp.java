@@ -109,7 +109,7 @@ public class ScpFromMessageBySftp extends ScpFromMessage {
     public void execute() throws IOException, JSchException {
         final ChannelSftp channel = openSftpChannel();
         try {
-            channel.connect();
+            channel.connect(DEFAULT_CHANNEL_CONN_TIMEOUT);
             try {
                 final SftpATTRS attrs = channel.stat(remoteFile);
                 if (attrs.isDir() && !remoteFile.endsWith("/")) {

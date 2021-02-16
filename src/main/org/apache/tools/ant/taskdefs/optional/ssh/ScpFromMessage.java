@@ -165,7 +165,7 @@ public class ScpFromMessage extends AbstractSshMessage {
             final OutputStream out = channel.getOutputStream();
             final InputStream in = channel.getInputStream();
 
-            channel.connect();
+            channel.connect(DEFAULT_CHANNEL_CONN_TIMEOUT);
 
             sendAck(out);
             startRemoteCpProtocol(in, out, localFile);
@@ -310,7 +310,7 @@ public class ScpFromMessage extends AbstractSshMessage {
     private void setLastModified(final File localFile) throws JSchException {
         SftpATTRS fileAttributes = null;
         final ChannelSftp channel = openSftpChannel();
-        channel.connect();
+        channel.connect(DEFAULT_CHANNEL_CONN_TIMEOUT);
         try {
             fileAttributes = channel.lstat(remoteDir(remoteFile)
                                            + localFile.getName());

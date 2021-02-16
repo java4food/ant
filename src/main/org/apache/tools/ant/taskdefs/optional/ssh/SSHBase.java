@@ -298,6 +298,7 @@ public abstract class SSHBase extends Task implements LogListener {
      * @throws JSchException on error
      */
     protected Session openSession() throws JSchException {
+        final int timeout = 120000;
         final JSch jsch = new JSch();
         final SSHBase base = this;
         if (verbose) {
@@ -332,8 +333,8 @@ public abstract class SSHBase extends Task implements LogListener {
             session.setServerAliveInterval(getServerAliveIntervalSeconds() * 1000);
         }
 
-        log("Connecting to " + host + ":" + port);
-        session.connect();
+        log("Connecting to " + host + ":" + port + " (timeout=" + timeout + ")");
+        session.connect(timeout);
         return session;
     }
 

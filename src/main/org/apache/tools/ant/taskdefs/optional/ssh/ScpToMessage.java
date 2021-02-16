@@ -252,7 +252,7 @@ public class ScpToMessage extends AbstractSshMessage {
             final OutputStream out = channel.getOutputStream();
             final InputStream in = channel.getInputStream();
 
-            channel.connect();
+            channel.connect(DEFAULT_CHANNEL_CONN_TIMEOUT);
 
             waitForAck(in);
             sendFileToRemote(localFile, in, out);
@@ -277,7 +277,7 @@ public class ScpToMessage extends AbstractSshMessage {
             final OutputStream out = channel.getOutputStream();
             final InputStream in = channel.getInputStream();
 
-            channel.connect();
+            channel.connect(DEFAULT_CHANNEL_CONN_TIMEOUT);
 
             waitForAck(in);
             for (Directory current : directoryList) {

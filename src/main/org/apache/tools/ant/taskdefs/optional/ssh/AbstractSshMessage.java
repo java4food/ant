@@ -37,6 +37,7 @@ import com.jcraft.jsch.SftpProgressMonitor;
  */
 public abstract class AbstractSshMessage {
     private static final double ONE_SECOND = 1000.0;
+    public static final int DEFAULT_CHANNEL_CONN_TIMEOUT = 60000;
 
     private final Session session;
     private final boolean verbose;
